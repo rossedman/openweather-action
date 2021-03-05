@@ -1,0 +1,20 @@
+name: 'City Weather'
+description: 'Retrieve temperature of a location'
+inputs:
+  city:
+    description: 'city name to get weather for'
+    required: true
+  token:
+    description: 'openweather api token'
+    required: true
+outputs:
+  min:
+    description: 'temperature minimum for the day'
+  max:
+    description: 'temperature maximum for the day'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    OPENWEATHER_CITY: ${{ inputs.city }}
+    OPENWEATHER_TOKEN: ${{ inputs.token }}
